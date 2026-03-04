@@ -1,0 +1,18 @@
+Explain the difference between useState and useRef. When would you use each?
+
+- useState được dùng để lưu state có ảnh hưởng tới việc render. 
+Khi gọi hàm setter của useState, React sẽ re-render lại component với giá trị state mới. 
+Dùng useState cho các dữ liệu hiển thị ra UI hoặc tham gia vào logic render 
+(form input được điều khiển, bộ đếm, flag loading, dữ liệu filter, v.v.).
+
+- useRef được dùng để lưu giá trị mutable không làm component re-render khi thay đổi, 
+và để trỏ tới DOM element (hoặc instance của component con). 
+Khi thay đổi current của một ref, React không re-render. 
+Dùng useRef cho các trường hợp như: lưu timeout/interval id, 
+lưu giá trị tạm để so sánh giữa các render, lưu previous value, 
+truy cập trực tiếp DOM (focus input, đo kích thước), 
+hoặc đếm số lần render mà không muốn hiển thị ra UI.
+
+- Dùng useState khi: giá trị thay đổi cần làm UI cập nhật
+- Dùng useRef khi: cần giữ một giá trị qua nhiều lần render nhưng không cần (hoặc không muốn) trigger re-render 
+hoặc cần trỏ tới DOM element
